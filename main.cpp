@@ -4,6 +4,17 @@ int random(int number) {
   return rand() % number; 
 }
 
+std::string isApprentice(){
+  int rn = rand() % 2;
+  std::string appYes = "Apprentice ";
+
+  if (rn == 1) {
+    return appYes;
+  } else {
+    return {};
+  }
+}
+
 int main() {
   int num;
   int count = 0;
@@ -13,17 +24,23 @@ int main() {
   std::string surnames[] = {
     "Angove","Angwin","Argus","Bligh","Bolitho","Bosanko","Cardy","Carew","Carlyon","Carne","Chenoweth","Chenowith","Chynoweth","Couch","Cuff","Curnow","Eudy","Geen","Grose","Gummo","Keast","Kellow","Kevern","Kimbrel","Kimbrell","Kitto","Lamphier","Lanyon","Lower","Moon","Moyle","Nancarrow","Nankervis","Opie","Oppy","Pedrick","Pengelly","Penhollow","Penna","Penrose","Pethick","Polkinghorn","Polkinghorne","Prideaux","Quick","Retallick","Rosevear","Roskelley","Sholl","Skewes","Skuse","Spargo","Teague","Trebilcock","Tredinnick","Treen","Tregoning","Trelease","Treleven","Treloar","Tremaine","Tremayne","Trembath","Trenary","Tretheway","Trethewey","Trevarthen","Trevena","Trevethan","Trevithick","Trevorrow","Trezise","Truscott","Verran","Vigus","Woon"
   };
+  std::string jobs[] = {
+    "Captain","Quartermaster","Sailingmaster","Boatswain","Surgeon","Carpenter","Master Gunner","Mate","Cabin Boy","Apothecary","Blacksmith","Cabinetmaker","Chandler","Cobbler","Cooper","Gunsmith","Milliner","Printer","Tailor","Wheelwright","Wigmaker","Draper","Mercer","Grocer","Fishmonger","Goldsmith","Skinner","Haberdasher","Salter","Ironmonger","Vintner","Cordwainer","Innkeeper","Interpreter","Jester","Armourer","Astrologist","Diplomat","Glassblower","Gravedigger","Shipwright","Physician","Locksmith"
+  };
   
   int fnSize = (sizeof(forenames)/sizeof(*forenames));
   int snSize = (sizeof(surnames)/sizeof(*surnames));
+  int jobSize = (sizeof(jobs)/sizeof(*jobs));
   
   std::cout << "\n\n\nPirate Name Generator\nBy Matt Prime\n\n";
+  std::cout << "Forenames:" << fnSize << " | Surnames:" << snSize << " | Jobs:" << jobSize << "\n";
+  std::cout << "----------------------------------------\n\n";
   std::cout << "Yaargh! How many names ye be wantin'? ";
   std::cin >> num;
   std::cout << "Have ya " << num << " names ya scurvy dog...\n\n";
 
   while (count < num) {
-    std::cout << forenames[random(fnSize)] << " " << surnames[random(snSize)] << "\n";
+    std::cout << forenames[random(fnSize)] << " " << surnames[random(snSize)] << " (" << isApprentice() << jobs[random(jobSize)] << ")\n";
     count++;
   }
 }
